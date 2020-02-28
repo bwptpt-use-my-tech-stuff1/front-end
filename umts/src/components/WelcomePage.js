@@ -2,11 +2,16 @@ import React from 'react';
 
 const WelcomePage = () => {
   return (
-    <>
+    <div>
       <h1>Use My Tech Stuff</h1>
       <h3>Let your tech make you money</h3>
       <p>or save money by renting locally</p>
-      <h3>Why you'll love us {'❤️'}</h3>
+      <h3>
+        Why you'll love us
+        <span role='img' aria-label='heart'>
+          ❤️
+        </span>
+      </h3>
       <p>
         We help you save money by renting tech equipment locally.
         <br />
@@ -16,7 +21,7 @@ const WelcomePage = () => {
       </p>
       <button>Sign up</button>
       <button>Sign in</button>
-    </>
+    </div>
   );
 };
 
