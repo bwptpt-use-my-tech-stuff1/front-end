@@ -1,6 +1,6 @@
 import React from 'react';
 
-const WelcomePage = () => {
+const WelcomePage = ({ history }) => {
   return (
     <div>
       <h1>Use My Tech Stuff</h1>
@@ -19,8 +19,8 @@ const WelcomePage = () => {
         <br />
         You get to choose the day and time that works for you.
       </p>
-      <button>Sign up</button>
-      <button>Sign in</button>
+      <button onClick={() => history.push('/sign_up')}>Sign up</button>
+      <button onClick={() => history.push('/login')}>Sign in</button>
     </div>
   );
 };
