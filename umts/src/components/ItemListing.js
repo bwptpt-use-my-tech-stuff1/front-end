@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import Item from '../components/Item';
 
-import { techContext } from '../contexts/techContext';
+import TechContext from '../contexts/tech/techContext';
 import uuid from 'react-uuid';
 
 const ItemListing = () => {
-  const { items } = useContext(techContext);
+  const { items } = useContext(TechContext);
   return (
     <div>
       {items.map(item => (
