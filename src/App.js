@@ -24,7 +24,7 @@ function App() {
           <Route path='/login' component={Login} />
           <Route path='/dashboard' component={Dashboard} />
           <Route path='/rent_product' component={ProductRent} />
-          <Route path='/add_listing' component={AddListing} />
+          <Route path='/add-item' component={AddListing} />
           <Route path='/profile' component={Profile} />
           <Route path='/my_listings' component={OwnerListing} />
           <Route path='/history' component={History} />
