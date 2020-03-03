@@ -16,8 +16,8 @@ const Login = () => {
       <Form>
         <Field
           type='text'
-          name='email'
-          label='Email'
+          name='username'
+          label='Username'
           variant='outlined'
           component={TextField}
         />
@@ -35,27 +35,21 @@ const Login = () => {
 };
 
 const LoginForm = withFormik({
-  mapPropsToValues({ email, password }) {
+  mapPropsToValues({ username, password }) {
     return {
-      email: email || '',
+      username: username || '',
       password: password || ''
     };
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email()
-      .required(),
-    password: Yup.string()
-      .min(8)
-      .max(16)
-      .matches('^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]$')
-      .required()
+    username: Yup.string().required(),
+    password: Yup.string().required()
   }),
-  handleSubmit(values, { history }) {
+  handleSubmit(values, { props }) {
     axiosWithAuth()
-      .post('', values)
-      .then(res => {
-        history.push('/dashboard');
+      .post('/api/auth/login', values)
+      .then(() => {
+        props.history.push('/dashboard');
       })
       .catch(err => {
         console.log('Error', err);

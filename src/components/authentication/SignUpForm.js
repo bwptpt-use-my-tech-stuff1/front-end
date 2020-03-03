@@ -11,28 +11,25 @@ const SignUpForm = () => {
       <Form>
         <Field
           type='text'
-          name='first_name'
+          name='firstName'
           label='First name'
           variant='outlined'
           component={TextField}
         />
-
         <Field
           type='text'
-          name='last_name'
+          name='lastName'
           label='Last name'
           variant='outlined'
           component={TextField}
         />
-
         <Field
-          type='email'
-          name='email'
-          label='Email'
+          type='text'
+          name='username'
+          label='Username'
           variant='outlined'
           component={TextField}
         />
-
         <Field
           type='password'
           name='password'
@@ -40,7 +37,6 @@ const SignUpForm = () => {
           variant='outlined'
           component={TextField}
         />
-
         <button type='submit'>Submit</button>
       </Form>
     </div>
@@ -48,31 +44,29 @@ const SignUpForm = () => {
 };
 
 const SignUp = withFormik({
-  mapPropsToValues({ first_name, last_name, email, password }) {
+  mapPropsToValues({ firstName, lastName, username, password }) {
     return {
-      first_name: first_name || '',
-      last_name: last_name || '',
-      email: email || '',
+      firstName: firstName || '',
+      lastName: lastName || '',
+      username: username || '',
       password: password || ''
     };
   },
   validationSchema: Yup.object().shape({
-    first_name: Yup.string().required('Please enter your first name'),
-    last_name: Yup.string().required('Please enter your last name'),
-    email: Yup.string()
-      .email('Please enter a valid email')
-      .required('Please enter an email'),
+    firstName: Yup.string().required('Please enter your first name'),
+    lastName: Yup.string().required('Please enter your last name'),
+    username: Yup.string().required('Please enter an username'),
     password: Yup.string()
-      .min(8)
+      .min(6)
       .max(16)
-      .matches('^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]$')
       .required('Please enter a password')
   }),
-  handleSubmit(values, { history }) {
+  handleSubmit(values, { props }) {
+    console.log(values);
     axiosWithAuth()
-      .post('', values)
-      .then(res => {
-        history.push('/login');
+      .post('/api/auth/register', values)
+      .then(() => {
+        props.history.push('/dashboard');
       })
       .catch(err => {
         console.log('Error', err);
