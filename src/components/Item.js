@@ -4,7 +4,7 @@ const Item = ({ item }) => {
   return (
     <div>
       <h2>{item.title}</h2>
-      <p>{`${item.price_per_hr}/hr`}</p>
+      <p>{`${item.price_hour}/hr`}</p>
     </div>
   );
 };
