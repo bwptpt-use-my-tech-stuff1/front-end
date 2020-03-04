@@ -62,7 +62,6 @@ const SignUp = withFormik({
       .required('Please enter a password')
   }),
   handleSubmit(values, { props }) {
-    console.log(values);
     axiosWithAuth()
       .post('/api/auth/register', values)
       .then(() => {
