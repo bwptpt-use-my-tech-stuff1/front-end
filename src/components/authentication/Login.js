@@ -48,7 +48,8 @@ const LoginForm = withFormik({
   handleSubmit(values, { props }) {
     axiosWithAuth()
       .post('/api/auth/login', values)
-      .then(() => {
+      .then(res => {
+        localStorage.setItem('token', res.data.token);
         props.history.push('/dashboard');
       })
       .catch(err => {

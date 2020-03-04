@@ -1,23 +1,29 @@
 import React, { useReducer } from 'react';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import TechContext from './techContext';
 import techReducer from './techReducer';
 import { v4 as uuidv4 } from 'uuid';
-import { ADD_ITEM } from '../types';
+import { GET_ITEMS, ADD_ITEM } from '../types';
 
-const TechProvider = ({ children }) => {
+const TechState = ({ children }) => {
   const initialState = {
-    items: [
-      {
-        title: 'Canon EOS M5 Mirrorless Digital Camera',
-        description:
-          '24.2MP APS-C CMOS Sensor, DIGIC Image Processor, 2.36m-Dot EVF, Touch and Drag AF Control, 3.2" 1.62m-Dot Tilting Touchscreen LCD',
-        category_id: 'Camera',
-        price_hour: '$30',
-        price_day: '$150'
-      }
-    ]
+    items: []
   };
+
   const [state, dispatch] = useReducer(techReducer, initialState);
+
+  // Get Items
+  const getItems = async () => {
+    await axiosWithAuth()
+      .get('/api/protected/rentals')
+      .then(res => {
+        console.log('response', res.data);
+        dispatch({ type: GET_ITEMS, payload: res.data });
+      })
+      .catch(err => {
+        console.log('error', err);
+      });
+  };
 
   // Add Item
   const addItem = item => {
@@ -26,10 +32,10 @@ const TechProvider = ({ children }) => {
   };
 
   return (
-    <TechContext.Provider value={{ items: state.items, addItem }}>
+    <TechContext.Provider value={{ items: state.items, getItems, addItem }}>
       {children}
     </TechContext.Provider>
   );
 };
 
-export default TechProvider;
+export default TechState;

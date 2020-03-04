@@ -1,10 +1,11 @@
 import React from 'react';
 
 const Item = ({ item }) => {
+  const { title, price_hour } = item;
   return (
     <div>
-      <h2>{item.title}</h2>
-      <p>{`${item.price_hour}/hr`}</p>
+      <h2>{title}</h2>
+      <p>{`${price_hour}/hr`}</p>
     </div>
   );
 };
