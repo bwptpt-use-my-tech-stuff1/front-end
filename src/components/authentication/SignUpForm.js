@@ -66,7 +66,7 @@ const SignUp = withFormik({
     axiosWithAuth()
       .post('/api/auth/register', values)
       .then(() => {
-        props.history.push('/dashboard');
+        props.history.push('/login');
       })
       .catch(err => {
         console.log('Error', err);

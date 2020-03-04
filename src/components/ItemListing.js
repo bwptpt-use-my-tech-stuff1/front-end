@@ -1,15 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import Item from '../components/Item';
 
 import TechContext from '../contexts/tech/techContext';
-import uuid from 'react-uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 const ItemListing = () => {
-  const { items } = useContext(TechContext);
+  const { items, getItems } = useContext(TechContext);
+
+  useEffect(() => {
+    getItems();
+    //eslint-disable-next-line
+  }, []);
+
   return (
     <div>
       {items.map(item => (
-        <Item key={uuid()} item={item} />
+        <Item key={uuidv4()} item={item} />
       ))}
     </div>
   );
