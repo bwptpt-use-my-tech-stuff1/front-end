@@ -9,6 +9,7 @@ import ProductRent from './components/ProductRent';
 import AddListing from './components/AddListing';
 import Profile from './components/Profile';
 import OwnerListing from './components/OwnerListing';
+import EditListing from './components/EditListing';
 import History from './components/History';
 
 import TechState from './contexts/tech/TechState';
@@ -28,6 +29,7 @@ function App() {
           <PrivateRoute path='/add-item' component={AddListing} />
           <PrivateRoute path='/profile' component={Profile} />
           <PrivateRoute path='/my_listings' component={OwnerListing} />
+          <PrivateRoute path='/edit-item' component={EditListing} />
           <PrivateRoute path='/history' component={History} />
         </Switch>
       </div>

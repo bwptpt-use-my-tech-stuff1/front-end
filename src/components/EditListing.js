@@ -3,14 +3,18 @@ import Navbar from './layout/Navbar';
 import CategoryOptions from '../components/CategoryOptions';
 import TechContext from '../contexts/tech/techContext';
 
-const AddListing = props => {
-  const techContext = useContext(TechContext);
-  const { addItem, getCategories } = techContext;
+const initialItem = {
+  title: '',
+  description: '',
+  category_id: '',
+  checked_out: '',
+  price_per_day: '',
+  location: ''
+};
 
-  useEffect(() => {
-    getCategories();
-    //eslint-disable-next-line
-  }, []);
+const EditListing = props => {
+  const techContext = useContext(TechContext);
+  const { getCategories, updateItem, current, clearCurrent } = techContext;
 
   const [item, setItem] = useState({
     title: '',
@@ -20,6 +24,17 @@ const AddListing = props => {
     price_per_day: '',
     location: ''
   });
+
+  useEffect(() => {
+    getCategories();
+    //eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    if (current) {
+      setItem(current);
+    }
+  }, [current]);
 
   const { title, description, price_per_day, checked_out, location } = item;
 
@@ -33,15 +48,20 @@ const AddListing = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    addItem(item);
+    updateItem(item);
     props.history.push('/dashboard');
+  };
+
+  const clearAll = () => {
+    clearCurrent();
+    setItem(initialItem);
   };
 
   return (
     <div>
       <Navbar />
       <form onSubmit={handleSubmit}>
-        <h2>Add Item</h2>
+        <h2>Update Item</h2>
         <input
           type='text'
           placeholder='Title'
@@ -87,10 +107,11 @@ const AddListing = props => {
           value={location}
           onChange={handleChange}
         />
-        <input type='submit' value='Add item' />
+        <input type='submit' value='Update Item' />
+        {current && <button onClick={clearAll}>Clear</button>}
       </form>
     </div>
   );
 };
 
-export default AddListing;
+export default EditListing;
