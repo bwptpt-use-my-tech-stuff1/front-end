@@ -25,7 +25,7 @@ function App() {
           <Route path='/sign_up' component={SignUpForm} />
           <Route path='/login' component={Login} />
           <PrivateRoute path='/dashboard' component={Dashboard} />
-          <PrivateRoute path='/rent_product' component={ProductRent} />
+          <PrivateRoute path='/rentals/:id' component={ProductRent} />
           <PrivateRoute path='/add-item' component={AddListing} />
           <PrivateRoute path='/profile' component={Profile} />
           <PrivateRoute path='/my_listings' component={OwnerListing} />

@@ -64,8 +64,9 @@ const SignUp = withFormik({
   handleSubmit(values, { props }) {
     axiosWithAuth()
       .post('/api/auth/register', values)
-      .then(() => {
-        props.history.push('/login');
+      .then(res => {
+        localStorage.setItem('token', res.data.token);
+        props.history.push('/dashboard');
       })
       .catch(err => {
         console.log('Error', err);

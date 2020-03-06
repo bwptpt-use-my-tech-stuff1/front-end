@@ -5,6 +5,7 @@ import techReducer from './techReducer';
 
 import {
   GET_ITEMS,
+  GET_ITEM,
   GET_CATEGORIES,
   ADD_ITEM,
   SET_CURRENT,
@@ -16,6 +17,7 @@ import {
 const TechState = ({ children }) => {
   const initialState = {
     items: [],
+    item: {},
     categories: [],
     current: null
   };
@@ -28,6 +30,18 @@ const TechState = ({ children }) => {
       .get('/api/protected/rentals')
       .then(res => {
         dispatch({ type: GET_ITEMS, payload: res.data });
+      })
+      .catch(err => {
+        console.log('error', err);
+      });
+  };
+
+  // Get Item
+  const getItem = id => {
+    axiosWithAuth()
+      .get(`/api/protected/rentals/${id}`)
+      .then(res => {
+        dispatch({ type: GET_ITEM, payload: res.data });
       })
       .catch(err => {
         console.log('error', err);
@@ -89,9 +103,11 @@ const TechState = ({ children }) => {
     <TechContext.Provider
       value={{
         items: state.items,
+        item: state.item,
         categories: state.categories,
         current: state.current,
         getItems,
+        getItem,
         getCategories,
         addItem,
         setCurrent,
