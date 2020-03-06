@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import Item from '../components/Item';
+import ItemCard from './ItemCard';
 
 import TechContext from '../contexts/tech/techContext';
 import { v4 as uuidv4 } from 'uuid';
@@ -15,7 +15,7 @@ const ItemListing = () => {
   return (
     <div>
       {items.map(item => (
-        <Item key={uuidv4()} item={item} />
+        <ItemCard key={uuidv4()} item={item} />
       ))}
     </div>
   );

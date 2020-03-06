@@ -1,5 +1,6 @@
 import {
   GET_ITEMS,
+  GET_ITEM,
   GET_CATEGORIES,
   ADD_ITEM,
   UPDATE_ITEM,
@@ -14,6 +15,11 @@ export default (state, action) => {
       return {
         ...state,
         items: action.payload
+      };
+    case GET_ITEM:
+      return {
+        ...state,
+        item: action.payload
       };
     case GET_CATEGORIES:
       return {
