@@ -6,7 +6,8 @@ const Dashboard = () => {
   return (
     <div>
       <Navbar />
-      <h2>Discover Products</h2>
+      <h2 className='dashboard-heading'>Discover Products</h2>
+      <hr />
       <ItemListing />
     </div>
   );

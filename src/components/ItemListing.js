@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, Fragment } from 'react';
 import ItemCard from './ItemCard';
 
 import TechContext from '../contexts/tech/techContext';
@@ -13,11 +13,11 @@ const ItemListing = () => {
   }, []);
 
   return (
-    <div>
+    <Fragment>
       {items.map(item => (
         <ItemCard key={uuidv4()} item={item} />
       ))}
-    </div>
+    </Fragment>
   );
 };
 

@@ -8,12 +8,12 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 const Login = () => {
   return (
     <div>
-      <h2>Sign in</h2>
-      <p>
-        Need a Use My Tech Stuff account? <br />
-        <Link to='/sign_up'>Create an account</Link>
-      </p>
-      <Form>
+      <Form className='sign-form'>
+        <h2>Sign in</h2>
+        <p>
+          Need a Use My Tech Stuff account? <br />
+          <Link to='/sign_up'>Create an account</Link>
+        </p>
         <Field
           type='text'
           name='username'
@@ -28,7 +28,9 @@ const Login = () => {
           variant='outlined'
           component={TextField}
         />
-        <button type='submit'>Sign in</button>
+        <button className='sign-btn' type='submit'>
+          Sign in
+        </button>
       </Form>
     </div>
   );

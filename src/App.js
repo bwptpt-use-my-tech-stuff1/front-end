@@ -12,28 +12,31 @@ import OwnerListing from './components/OwnerListing';
 import EditListing from './components/EditListing';
 import History from './components/History';
 
+import UserState from './contexts/user/UserState';
 import TechState from './contexts/tech/TechState';
 
 import './App.css';
 
 function App() {
   return (
-    <TechState>
-      <div className='App'>
-        <Switch>
-          <Route exact path='/' component={WelcomePage} />
-          <Route path='/sign_up' component={SignUpForm} />
-          <Route path='/login' component={Login} />
-          <PrivateRoute path='/dashboard' component={Dashboard} />
-          <PrivateRoute path='/rentals/:id' component={ProductRent} />
-          <PrivateRoute path='/add-item' component={AddListing} />
-          <PrivateRoute path='/profile' component={Profile} />
-          <PrivateRoute path='/my_listings' component={OwnerListing} />
-          <PrivateRoute path='/edit-item' component={EditListing} />
-          <PrivateRoute path='/history' component={History} />
-        </Switch>
-      </div>
-    </TechState>
+    <UserState>
+      <TechState>
+        <div className='App'>
+          <Switch>
+            <Route exact path='/' component={WelcomePage} />
+            <Route path='/sign_up' component={SignUpForm} />
+            <Route path='/login' component={Login} />
+            <PrivateRoute path='/dashboard' component={Dashboard} />
+            <PrivateRoute path='/rentals/:id' component={ProductRent} />
+            <PrivateRoute path='/add-item' component={AddListing} />
+            <PrivateRoute path='/profile' component={Profile} />
+            <PrivateRoute path='/my_listings' component={OwnerListing} />
+            <PrivateRoute path='/edit-item' component={EditListing} />
+            <PrivateRoute path='/history' component={History} />
+          </Switch>
+        </div>
+      </TechState>
+    </UserState>
   );
 }
 
