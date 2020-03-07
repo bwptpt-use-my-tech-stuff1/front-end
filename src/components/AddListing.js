@@ -13,6 +13,7 @@ const AddListing = props => {
   }, []);
 
   const [item, setItem] = useState({
+    image: '',
     title: '',
     description: '',
     category_id: '',
@@ -21,7 +22,14 @@ const AddListing = props => {
     location: ''
   });
 
-  const { title, description, price_per_day, checked_out, location } = item;
+  const {
+    title,
+    description,
+    price_per_day,
+    checked_out,
+    location,
+    image
+  } = item;
 
   const handleChange = e => {
     setItem({ ...item, [e.target.name]: e.target.value });
@@ -42,6 +50,13 @@ const AddListing = props => {
       <Navbar />
       <form onSubmit={handleSubmit}>
         <h2>Add Item</h2>
+        <input
+          type='text'
+          placeholder='Image URL'
+          name='image'
+          value={image}
+          onChange={handleChange}
+        />
         <input
           type='text'
           placeholder='Title'
@@ -87,7 +102,7 @@ const AddListing = props => {
           value={location}
           onChange={handleChange}
         />
-        <input type='submit' value='Add item' />
+        <input type='submit' value='Add Item' />
       </form>
     </div>
   );

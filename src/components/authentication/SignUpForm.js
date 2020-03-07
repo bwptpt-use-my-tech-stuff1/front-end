@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { withFormik, Form, Field } from 'formik';
 import { TextField } from 'formik-material-ui';
 import * as Yup from 'yup';
@@ -7,8 +8,12 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 const SignUpForm = () => {
   return (
     <div>
-      <h2>Sign Up</h2>
-      <Form>
+      <Form className='sign-form'>
+        <h2>Sign Up</h2>
+        <p>
+          Already have a Use My Tech Stuff account? <br />
+          <Link to='/login'>Sign in</Link>
+        </p>
         <Field
           type='text'
           name='firstName'
@@ -37,7 +42,9 @@ const SignUpForm = () => {
           variant='outlined'
           component={TextField}
         />
-        <button type='submit'>Submit</button>
+        <button className='sign-btn' type='submit'>
+          Submit
+        </button>
       </Form>
     </div>
   );

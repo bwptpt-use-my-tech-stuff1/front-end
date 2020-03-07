@@ -10,7 +10,7 @@ const ProductRent = ({ history, match }) => {
     const id = match.params.id;
 
     getItem(id);
-  }, []);
+  }, [getItem, match.params.id]);
 
   return (
     <div>

@@ -6,3 +6,5 @@ export const SET_CURRENT = 'SET_CURRENT';
 export const CLEAR_CURRENT = 'CLEAR_CURRENT';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
+
+export const UPDATE_USER = 'UPDATE_USER';

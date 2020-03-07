@@ -78,7 +78,7 @@ const TechState = ({ children }) => {
     dispatch({ type: CLEAR_CURRENT });
   };
 
-  // Update Current Contact
+  // Update Current Item
   const updateItem = item => {
     axiosWithAuth()
       .put(`/api/protected/rentals/${item.id}`, item)
