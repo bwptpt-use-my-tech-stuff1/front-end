@@ -8,7 +8,9 @@ const Dashboard = () => {
       <Navbar />
       <h2 className='dashboard-heading'>Discover Products</h2>
       <hr />
-      <ItemListing />
+      <div className='card-flex'>
+        <ItemListing />
+      </div>
     </div>
   );
 };

@@ -10,7 +10,6 @@ import AddListing from './components/AddListing';
 import Profile from './components/Profile';
 import OwnerListing from './components/OwnerListing';
 import EditListing from './components/EditListing';
-import History from './components/History';
 
 import UserState from './contexts/user/UserState';
 import TechState from './contexts/tech/TechState';
@@ -32,7 +31,6 @@ function App() {
             <PrivateRoute path='/profile' component={Profile} />
             <PrivateRoute path='/my_listings' component={OwnerListing} />
             <PrivateRoute path='/edit-item' component={EditListing} />
-            <PrivateRoute path='/history' component={History} />
           </Switch>
         </div>
       </TechState>

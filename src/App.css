@@ -149,7 +149,6 @@ a {
 
 img {
   width: 243px;
-  height: 162px;
 }
 
 .dashboard-heading {
@@ -157,4 +156,11 @@ img {
   font-weight: bold;
   font-size: 36px;
   line-height: 43px;
+}
+
+.card-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 10px 10px 10px;
 }
