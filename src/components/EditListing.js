@@ -57,7 +57,7 @@ const EditListing = props => {
   const handleSubmit = e => {
     e.preventDefault();
     updateItem(item);
-    props.history.push('/dashboard');
+    props.history.push('/profile');
   };
 
   const clearAll = () => {
